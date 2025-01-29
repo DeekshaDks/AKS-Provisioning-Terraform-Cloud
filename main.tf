@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "aks_rg" {
   name     = "${var.prefix}-rg"
-  location = "East US" # Change to your preferred location
+  location = var.location 
 }
 
 resource "azurerm_virtual_network" "aks_vnet" {
@@ -35,10 +35,10 @@ resource "azurerm_kubernetes_cluster" "aks" {
     node_count          = var.node_count
     vm_size             = "Standard_DS2_v2"
     zones               = [1, 2, 3]
-    os_disk_size_gb     = 30
+    os_disk_size_gb     = var.os_disk_size_gb
     enable_auto_scaling = true
-    max_count           = 3
-    min_count           = 1
+    max_count           = var.max_count
+    min_count           = var.min_count
 
     type = "VirtualMachineScaleSets"
     
