@@ -10,12 +10,6 @@ variable "location" {
   default     = "East US"
 }
 
-# Kubernetes version to be used for the AKS cluster
-variable "kubernetes_version" {
-  description = "Kubernetes version for the AKS cluster"
-  type        = string
-  default     = "1.26.3"
-}
 
 # Node count for the default node pool
 variable "node_count" {
